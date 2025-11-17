@@ -6,7 +6,13 @@
       "Bash(cmd /c dir testsold)",
       "Bash(cat:*)",
       "Bash(pip show:*)",
-      "Bash(nul)"
+      "Bash(nul)",
+      "Bash(pytest:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(python:*)",
+      "Bash(dir:*)",
+      "Bash(set PYTHONPATH=C:Usersjean-noel.diltoersoftwaresourcesAtlantis:*)",
+      "Bash(pip install:*)"
     ],
     "deny": [],
     "ask": []
