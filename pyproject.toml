@@ -48,10 +48,11 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = [
     "-v",
-    "--cov=pulsus",
-    "--cov-report=html",
-    "--cov-report=term-missing",
-    "--cov-report=xml",
+    # Coverage temporarily disabled - pytest-cov not configured
+    # "--cov=pulsus",
+    # "--cov-report=html",
+    # "--cov-report=term-missing",
+    # "--cov-report=xml",
 ]
 asyncio_mode = "auto"
 
