@@ -210,7 +210,7 @@ mv file_manager.py mcp/simple/file_manager.py
 ### Step 3: Test Discovery
 
 ```python
-from langchain import discover_and_convert_mcp_domains
+from langchain_integration import discover_and_convert_mcp_domains
 
 # Pulsus will automatically discover your MCP
 tools = discover_and_convert_mcp_domains()
@@ -493,7 +493,7 @@ def test_capabilities():
 ```python
 # tests/integration/test_my_mcp_langchain.py
 import pytest
-from langchain import mcp_to_langchain_tool
+from langchain_integration import mcp_to_langchain_tool
 from mcp.simple.my_custom_mcp import MyCustomMCP
 
 def test_langchain_conversion():
@@ -531,7 +531,7 @@ pytest tests/unit/test_my_mcp.py --cov=mcp.simple.my_custom_mcp --cov-report=htm
 Your MCP is automatically available as a LangChain tool:
 
 ```python
-from langchain import mcp_to_langchain_tool
+from langchain_integration import mcp_to_langchain_tool
 from mcp.simple.my_custom_mcp import MyCustomMCP
 
 # Convert to LangChain tool
@@ -549,7 +549,7 @@ result = agent.invoke("Say hello")
 Pulsus discovers your MCP automatically:
 
 ```python
-from langchain import discover_and_convert_mcp_domains
+from langchain_integration import discover_and_convert_mcp_domains
 
 # Discover all MCPs (including yours)
 all_tools = discover_and_convert_mcp_domains()

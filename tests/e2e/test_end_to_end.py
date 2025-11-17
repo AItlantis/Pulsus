@@ -17,7 +17,7 @@ import time
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from langchain.tool_adapter import (
+from langchain_integration.tool_adapter import (
     mcp_to_langchain_tool,
     discover_and_convert_mcp_domains,
 )

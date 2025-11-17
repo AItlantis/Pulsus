@@ -1,13 +1,39 @@
 # Core dependencies
+pydantic>=2.0.0
+python-dotenv
+
+# LangChain ecosystem
 langchain>=0.1.0
+langchain-core>=0.1.0
 langchain-community>=0.0.10
 langgraph>=0.0.20
-pydantic>=2.0.0
+
+# LLM providers
+openai>=1.0.0
+anthropic
 ollama>=0.1.0
+
+# Process management (Phase 5)
 psutil>=5.9.0
+
+# Templating (Phase 4)
 jinja2>=3.1.0
+
+# Validation (Phase 4)
 jsonschema>=4.17.0
+
+# HTTP & API (Phase 8)
 httpx>=0.24.0
 fastapi>=0.100.0
 uvicorn>=0.23.0
-pyQt5
+
+# UI (optional)
+# pyQt5
+
+# Code formatting and analysis
+black>=23.0.0
+tiktoken
+
+# Testing (also in requirements-dev.txt)
+pytest>=7.0.0
+pytest-cov>=4.0.0

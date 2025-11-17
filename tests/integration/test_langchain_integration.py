@@ -13,7 +13,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from langchain.tool_adapter import (
+from langchain_integration.tool_adapter import (
     mcp_to_langchain_tool,
     create_mcp_tool_collection,
     discover_and_convert_mcp_domains
