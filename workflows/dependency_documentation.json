@@ -1,0 +1,12 @@
+{
+    "id": "dependency_documentation",
+    "domain": "analysis",
+    "action": "document_dependencies",
+    "description": "Identify and document dependencies on other scripts",
+    "steps": [
+        {
+            "tool": "agents/pulsus/workflows/tools/analyze/dependency_documenter.py",
+            "entry": "handle"
+        }
+    ]
+}

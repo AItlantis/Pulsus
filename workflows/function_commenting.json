@@ -1,0 +1,65 @@
+{
+    "id": "function_commenting",
+    "domain": "analysis",
+    "action": "comment_functions",
+    "description": "Generate detailed comments for each function in Python files",
+    "preprompt": {
+        "system": "You are a Python documentation expert specializing in writing clear, comprehensive docstrings.",
+        "instructions": [
+            "Analyze the function's purpose, behavior, and context within the module",
+            "Write concise but complete documentation that helps developers understand usage",
+            "Focus on WHY and HOW, not just WHAT the code does",
+            "Include edge cases, assumptions, and important implementation details",
+            "Use clear, professional language without unnecessary verbosity"
+        ],
+        "format": {
+            "structure": [
+                "Brief one-line summary (imperative mood, e.g., 'Calculate...' not 'Calculates...')",
+                "Blank line",
+                "Detailed description (2-4 sentences explaining purpose and behavior)",
+                "Blank line",
+                "Args section - each parameter on new line with name, type, and description",
+                "Blank line",
+                "Returns section - type and description of return value",
+                "Blank line (if applicable)",
+                "Raises section - exceptions that may be raised with conditions (if applicable)",
+                "Blank line (if applicable)",
+                "Example section - brief usage example (if helpful for complex functions)",
+                "Blank line (if applicable)",
+                "Note section - important caveats, performance considerations, or warnings (if applicable)"
+            ],
+            "style": "Custom format based on Google-style conventions",
+            "example": "\"\"\"\\nBrief summary of what function does.\\n\\nDetailed explanation of the function's purpose, behavior, and any\\nimportant context. Explain the approach or algorithm if relevant.\\n\\nArgs:\\n    param1 (type): Description of first parameter\\n    param2 (type): Description of second parameter\\n    optional_param (type, optional): Description. Defaults to value.\\n\\nReturns:\\n    return_type: Description of return value and what it represents\\n\\nRaises:\\n    ExceptionType: When and why this exception is raised\\n\\nExample:\\n    >>> result = function_name(arg1, arg2)\\n    >>> print(result)\\n    expected_output\\n\\nNote:\\n    Important caveats or performance considerations\\n\"\"\""
+        },
+        "guidelines": [
+            "If function has existing docstring, improve/expand it rather than replacing entirely",
+            "For simple getters/setters, a one-line summary may suffice",
+            "For complex algorithms, explain the approach and time/space complexity",
+            "Document side effects, mutations, or state changes",
+            "Mention thread-safety or concurrency concerns if relevant",
+            "Cross-reference related functions or classes when helpful"
+        ]
+    },
+    "options": {
+        "recursive": true,
+        "auto_insert": true,
+        "stream_responses": true,
+        "file_extensions": [".py"],
+        "skip_patterns": ["__pycache__", ".git", ".venv", "venv", "env"]
+    },
+    "context_loading": {
+        "enabled": true,
+        "load_repository_context": true,
+        "use_repo_patterns": true,
+        "follow_repo_conventions": true
+    },
+    "steps": [
+        {
+            "tool": "agents/pulsus/workflows/tools/analyze/function_commenter.py",
+            "entry": "handle",
+            "params": {
+                "repo_context": "${context.repository}"
+            }
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "id": "generate_repo_report",
+    "domain": "analysis",
+    "action": "generate_report",
+    "description": "Generate comprehensive Excel report with repository analysis, validation issues, and reusability metrics",
+    "steps": [
+        {
+            "tool": "mcp_generate_repository_report",
+            "entry": "invoke",
+            "params": {
+                "repo_path": "${input.repo_path}",
+                "output_path": "${input.output_path}",
+                "ignore_patterns": ["test", "tests", "__pycache__", ".venv", "venv", ".git"]
+            }
+        }
+    ]
+}

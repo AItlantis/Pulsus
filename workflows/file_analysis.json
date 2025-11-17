@@ -1,0 +1,22 @@
+{
+    "id": "file_analysis",
+    "domain": "analysis",
+    "action": "analyze_file",
+    "description": "Analyze Python files provided with @path syntax. Automatically loads repository context from .pulsus/ if available.",
+    "keywords": ["analyze", "file", "@file", "@path", "python", "code"],
+    "steps": [
+        {
+            "tool": "agents/pulsus/workflows/tools/analyze/file_analyzer.py",
+            "entry": "handle",
+            "params": {
+                "input_text": "${input.text}",
+                "repo_context": "${context.repository}"
+            }
+        }
+    ],
+    "context_loading": {
+        "enabled": true,
+        "load_repository_context": true,
+        "cache_context": true
+    }
+}

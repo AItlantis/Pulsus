@@ -1,0 +1,15 @@
+{
+    "id": "validate_file_quality",
+    "domain": "validation",
+    "action": "validate_quality",
+    "description": "Validate a single Python file for code quality, naming conventions, and metadata completeness",
+    "steps": [
+        {
+            "tool": "mcp_validate_python_file",
+            "entry": "invoke",
+            "params": {
+                "file_path": "${input.file_path}"
+            }
+        }
+    ]
+}

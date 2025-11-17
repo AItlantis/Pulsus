@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd /c \"if not exist tests\\old mkdir tests\\old\")",
+      "Bash(echo:*)",
+      "Bash(cmd /c dir testsold)",
+      "Bash(cat:*)",
+      "Bash(pip show:*)",
+      "Bash(nul)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

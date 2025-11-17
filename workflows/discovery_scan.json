@@ -1,0 +1,12 @@
+{
+    "id": "discovery_scan",
+    "domain": "discovery",
+    "action": "scan_framework",
+    "description": "Automatically discover and summarize all available tools in the framework",
+    "steps": [
+        {
+            "tool": "agents/pulsus/workflows/tools/discover/framework_scanner.py",
+            "entry": "handle"
+        }
+    ]
+}

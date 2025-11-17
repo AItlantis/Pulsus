@@ -1,0 +1,17 @@
+{
+    "id": "unified_path_analysis",
+    "domain": "analysis",
+    "action": "analyze_path",
+    "description": "Unified analyzer for @path syntax. Automatically detects files vs directories and loads repository context from .pulsus/ when available.",
+    "keywords": ["@path", "@file", "@directory", "analyze", "unified", "path"],
+    "steps": [
+        {
+            "tool": "agents/pulsus/workflows/tools/analyze/unified_analyzer.py",
+            "entry": "handle",
+            "params": {
+                "input_text": "${input.text}",
+                "path": "${input.path}"
+            }
+        }
+    ]
+}

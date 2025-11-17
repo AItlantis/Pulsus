@@ -1,0 +1,25 @@
+{
+    "id": "repository_analysis_with_insights",
+    "domain": "analysis",
+    "action": "analyze_repository",
+    "description": "Analyze Python repository with AI-powered insights, natural language summary, thinking, recommendations, health assessment, quality analysis, reusability scoring, and actionable guidance. Provides human-readable interpretation beyond raw metrics. Automatically saves to .pulsus/ for context reuse.",
+    "keywords": ["analyze", "analyse", "repository", "repo", "insights", "thinking", "summary", "recommendations", "llm", "ai", "interpretation", "explain", "assess", "evaluate", "check", "inspect", "review"],
+    "caching": {
+        "enabled": true,
+        "storage_location": ".pulsus/repository_analysis.json",
+        "check_existing": true,
+        "allow_force_refresh": true
+    },
+    "steps": [
+        {
+            "tool": "agents/pulsus/workflows/tools/analyze/repository_analyzer_llm.py",
+            "entry": "handle",
+            "params": {
+                "repo_path": "${input.repo_path}",
+                "generate_report": false,
+                "save_to_pulsus": true,
+                "force_refresh": "${input.force_refresh}"
+            }
+        }
+    ]
+}
