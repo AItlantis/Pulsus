@@ -100,9 +100,16 @@ def mcp_to_langchain_tool(
     capabilities = instance.get_capabilities()
 
     # Extract metadata
-    domain_name = capabilities.get('domain', mcp_class.__name__)
-    description = capabilities.get('description', 'MCP domain operations')
-    actions = capabilities.get('actions', {})
+    # get_capabilities() returns List[Dict], not Dict
+    # Convert CamelCase to snake_case for domain name
+    import re
+    domain_name = re.sub(r'(?<!^)(?=[A-Z])', '_', mcp_class.__name__).lower()
+
+    if capabilities and len(capabilities) > 0:
+        description = f"MCP domain with {len(capabilities)} operations"
+    else:
+        description = 'MCP domain operations'
+    actions = capabilities  # List of operations
 
     # Create wrapper function for LangChain
     def execute_wrapper(**kwargs) -> Dict[str, Any]:
@@ -123,9 +130,10 @@ def mcp_to_langchain_tool(
             print(f"[LangChain→Pulsus] Params: {params}")
 
         # Execute MCP operation
+        # Note: execute() expects 'operation' not 'action', and **kwargs not params dict
         response: MCPResponse = instance.execute(
-            action=action,
-            params=params
+            operation=action,
+            **params
         )
 
         if verbose:
