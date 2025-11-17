@@ -15,7 +15,8 @@
       "Bash(pip install:*)",
       "Bash(set PYTHONPATH=C:Usersjean-noel.diltoersoftwaresourcesAtlantisTestudoagentsPulsus)",
       "Bash(find:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(mv:*)"
     ],
     "deny": [],
     "ask": []
