@@ -177,25 +177,47 @@
     - format_script (@write_safe)
     - comment_functions (@write_safe)
 
-- [ ] 🔴 Implement FileManager (Tier 1)
+- [x] 🔴 Implement FileManager (Tier 1)
   - **Action:** Create file operations domain
   - **File:** `pulsus/mcp/simple/file_manager.py`
   - **Agent:** Jean-Claude Mechanic
+  - **Status:** ✅ Complete (November 17, 2025)
   - **Actions:**
     - create_file (@write_safe)
     - delete_file (@write_safe)
     - move_file (@write_safe)
+    - copy_file (@write_safe)
     - list_files (@read_only)
+    - get_file_info (@read_only)
+  - **Tests:** 14/14 passed
 
-- [ ] 🔴 Implement DataReader (Tier 1)
+- [x] 🔴 Implement DataReader (Tier 1)
   - **Action:** Create data loading domain
   - **File:** `pulsus/mcp/simple/data_reader.py`
   - **Agent:** Jean-Claude Mechanic
+  - **Status:** ✅ Complete (November 17, 2025)
   - **Actions:**
-    - read_csv (@read_only)
-    - read_json (@read_only)
-    - read_parquet (@read_only)
+    - read_csv (@read_only @cached)
+    - read_json (@read_only @cached)
+    - read_parquet (@read_only @cached)
+    - read_excel (@read_only @cached)
+    - get_schema (@read_only @cached)
     - query_dataframe (@read_only)
+  - **Tests:** 11/11 passed
+
+- [x] 🔴 Implement TextProcessor (Tier 1)
+  - **Action:** Create text manipulation domain
+  - **File:** `pulsus/mcp/simple/text_processor.py`
+  - **Agent:** Jean-Claude Mechanic
+  - **Status:** ✅ Complete (November 17, 2025)
+  - **Actions:**
+    - search_text (@read_only)
+    - replace_text (@read_only)
+    - extract_patterns (@read_only)
+    - count_words (@read_only @cached)
+    - split_text (@read_only)
+    - analyze_text (@read_only)
+  - **Tests:** 17/17 passed
 
 - [ ] 🟠 Create LangChain tool adapters
   - **Action:** Convert MCPBase to LangChain StructuredTool
@@ -860,7 +882,7 @@
 |-------|--------|----------|---------------------|
 | 0: Pre-Implementation | ✅ Complete | 100% | Week 0 |
 | 1: Core Framework | ✅ Complete | 100% | November 10, 2025 |
-| 2: Classic Domains | 🟡 Planning Complete | 0% | Week 8 |
+| 2: Classic Domains | 🟢 In Progress | 60% | November 17, 2025 |
 | 3: Workflow Domains | ⚪ Not Started | 0% | Week 12 |
 | 4: Customizable Framework | ⚪ Not Started | 0% | Week 14 |
 | 5: Console Execution | ⚪ Not Started | 0% | Week 16 |
@@ -945,9 +967,12 @@ use jean-claude-architect to create user guides
 ## 📝 Notes
 
 ### Last Updated
-- **Date:** November 2025
-- **By:** Jean-Claude Architect + Jean-Claude MCP
-- **Changes:** Initial TODO creation from unified plan
+- **Date:** November 17, 2025
+- **By:** Jean-Claude Mechanic
+- **Changes:**
+  - Phase 2 progress: Implemented 3 new MCP domains
+  - FileManager, DataReader, TextProcessor all complete
+  - 42 tests created and passing (100% pass rate)
 
 ### Next Review
 - **When:** End of Phase 1 (Week 4)
@@ -961,12 +986,12 @@ use jean-claude-architect to create user guides
 
 ---
 
-**Status:** ✅ Phase 1 Complete → Ready for Phase 2
-**Last Updated:** November 10, 2025
-**Next Action:** Begin Phase 2 - Classic MCP Domains (see docs/PHASE2_PLAN.md)
-**Priority:** Migrate ScriptOps → Migrate RepositoryOps → Create FileManager
+**Status:** 🟢 Phase 2 In Progress (60% complete)
+**Last Updated:** November 17, 2025
+**Next Action:** Complete LangChain tool adapters and integration tests
+**Priority:** LangChain adapters → Integration tests → Domain catalog
 
-**Phase 1 complete with 100% test pass rate! Ready for Phase 2 implementation!** 🚀
+**Phase 2 Progress:** 3 new domains implemented (FileManager, DataReader, TextProcessor) with 42/42 tests passing! ✅
 
 ---
 
@@ -988,3 +1013,12 @@ use jean-claude-architect to create user guides
 - ✅ LangChain integration strategy designed
 - ✅ Task breakdown with 3-week timeline
 - **Ready to start:** Week 1 - Core Migrations
+
+### November 17, 2025 - Phase 2 Partial Complete 🟢
+- ✅ FileManager domain implemented with 6 methods (create, delete, move, copy, list, get_info)
+- ✅ DataReader domain implemented with 6 methods (read_csv, read_json, read_parquet, read_excel, get_schema, query_dataframe)
+- ✅ TextProcessor domain implemented with 6 methods (search, replace, extract, count_words, split, analyze)
+- ✅ 42 comprehensive tests created and passing (100% success rate)
+- ✅ mcp/simple/__init__.py updated to export all 5 domains
+- **Total:** ~1,200 lines of production code + ~450 lines of tests
+- **Remaining:** LangChain tool adapters, integration tests, domain catalog
