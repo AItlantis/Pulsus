@@ -14,7 +14,8 @@
       "Bash(set PYTHONPATH=C:Usersjean-noel.diltoersoftwaresourcesAtlantis:*)",
       "Bash(pip install:*)",
       "Bash(set PYTHONPATH=C:Usersjean-noel.diltoersoftwaresourcesAtlantisTestudoagentsPulsus)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(rm:*)"
     ],
     "deny": [],
     "ask": []

@@ -172,6 +172,77 @@ def _create_domain_tool(instance: MCPBase, capabilities: List[Dict]):
     return tool
 
 
+def discover_and_convert_mcp_domains(
+    search_paths: Optional[List[str]] = None,
+    verbose: bool = False
+) -> List[Any]:
+    """
+    Discover all MCP domain classes and convert them to LangChain tools.
+
+    Args:
+        search_paths: Optional list of module paths to search (e.g., ['mcp.simple'])
+                     If None, searches common MCP locations
+        verbose: Whether to print discovery progress
+
+    Returns:
+        List of LangChain tools
+
+    Example:
+        >>> tools = discover_and_convert_mcp_domains()
+        >>> tools = discover_and_convert_mcp_domains(search_paths=['mcp.simple'])
+    """
+    import importlib
+    import pkgutil
+
+    if search_paths is None:
+        search_paths = ['mcp.simple', 'mcp']
+
+    discovered_tools = []
+
+    for search_path in search_paths:
+        try:
+            # Import the module
+            module = importlib.import_module(search_path)
+
+            # Get all classes in the module
+            if hasattr(module, '__path__'):
+                # It's a package, iterate through submodules
+                for importer, modname, ispkg in pkgutil.iter_modules(module.__path__):
+                    try:
+                        submodule = importlib.import_module(f"{search_path}.{modname}")
+                        # Find MCPBase subclasses
+                        for name in dir(submodule):
+                            obj = getattr(submodule, name)
+                            if (isinstance(obj, type) and
+                                issubclass(obj, MCPBase) and
+                                obj is not MCPBase):
+                                if verbose:
+                                    print(f"Discovered: {obj.__name__}")
+                                tool = mcp_to_langchain_tool(obj)
+                                if tool:
+                                    discovered_tools.append(tool)
+                    except Exception as e:
+                        if verbose:
+                            print(f"Error loading {search_path}.{modname}: {e}")
+            else:
+                # It's a single module
+                for name in dir(module):
+                    obj = getattr(module, name)
+                    if (isinstance(obj, type) and
+                        issubclass(obj, MCPBase) and
+                        obj is not MCPBase):
+                        if verbose:
+                            print(f"Discovered: {obj.__name__}")
+                        tool = mcp_to_langchain_tool(obj)
+                        if tool:
+                            discovered_tools.append(tool)
+        except Exception as e:
+            if verbose:
+                print(f"Error searching {search_path}: {e}")
+
+    return discovered_tools
+
+
 class MCPToolRegistry:
     """
     Registry for managing MCP tools in LangChain applications.
