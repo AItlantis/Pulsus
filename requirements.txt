@@ -30,6 +30,11 @@ uvicorn>=0.23.0
 # UI (optional)
 # pyQt5
 
+# Data processing (Phase 2 - DataReader)
+pandas>=2.0.0
+pyarrow>=10.0.0
+openpyxl>=3.0.0
+
 # Code formatting and analysis
 black>=23.0.0
 tiktoken
