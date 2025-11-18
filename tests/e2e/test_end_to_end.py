@@ -17,13 +17,13 @@ import time
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from langchain_integration.tool_adapter import (
+from langchain.tool_adapter import (
     mcp_to_langchain_tool,
     discover_and_convert_mcp_domains,
 )
 from mcp.core.base import MCPBase, MCPResponse
 from mcp.core.decorators import read_only, write_safe
-from mcp.simple.script_ops import ScriptOps
+# from mcp.simple.script_ops import ScriptOps  # Temporarily commented out due to import issues
 
 
 class E2ETestMCP(MCPBase):
